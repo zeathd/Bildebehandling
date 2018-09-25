@@ -302,11 +302,11 @@ void Bilde::linefilter()
 
 	int grey = 0;
 
-	for (int i = 0; i < (this->heigth); i++)
+	for (int i = 1; i < (this->width-1); i++)
 	{
 		vector<Pixel> rad;
 
-		for (int j = 0; j < this->width; j++)
+		for (int j = 1; j < (this->heigth-1); j++)
 		{
 			Pixel *aaa = &pixelData[i - 1][j - 1];
 			Pixel *bbb = &pixelData[i - 1][j];

@@ -10,8 +10,7 @@ int main() {
 	testbilde->greyscale();
 	testbilde->lagreBitmapFil("tester1.bmp");
 
-	testbilde->linefilter();
-	testbilde->lagreBitmapFil("tester2.bmp");
+
 
 	delete testbilde;
 	testbilde = 0;

@@ -300,35 +300,18 @@ void Bilde::linefilter()
 	int HH = -1;
 	int II = -1;
 
-	int grey = 0;
 
-	for (int i = 0; i < (this->heigth); i++)
+	for (int i = 0; i < (this->width); i++)
 	{
-		vector<Pixel> rad;
 
-		for (int j = 0; j < this->width; j++)
+		for (int j = 0; j < this->heigth; j++)
 		{
-			Pixel *aaa = &pixelData[i - 1][j - 1];
-			Pixel *bbb = &pixelData[i - 1][j];
-			Pixel *ccc = &pixelData[i - 1][j + 1];
-			Pixel *ddd = &pixelData[i][j - 1];
-			Pixel *eee = &pixelData[i][j];
-			Pixel *fff = &pixelData[i][j + 1];
-			Pixel *ggg = &pixelData[i + 1][j - 1];
-			Pixel *hhh = &pixelData[i + 1][j];
-			Pixel *iii = &pixelData[i + 1][j + 1];
+			Pixel *p = &pixelData[i][j];
 
-			grey = ((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II));
 
-			Pixel nyPixel(grey, grey, grey);
-			rad.push_back(nyPixel);
+
 		}
-
-		this->mellomdata.push_back(rad);
 	}
-
-	this->pixelData = this->mellomdata;
-
 }
 #pragma endregion
 

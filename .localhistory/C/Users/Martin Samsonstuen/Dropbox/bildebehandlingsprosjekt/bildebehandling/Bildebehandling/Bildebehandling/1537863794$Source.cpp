@@ -8,10 +8,9 @@ int main() {
 	testbilde->lesBitmapFil("tester.bmp");
 
 	testbilde->greyscale();
+
 	testbilde->lagreBitmapFil("tester1.bmp");
 
-	testbilde->linefilter();
-	testbilde->lagreBitmapFil("tester2.bmp");
 
 	delete testbilde;
 	testbilde = 0;
