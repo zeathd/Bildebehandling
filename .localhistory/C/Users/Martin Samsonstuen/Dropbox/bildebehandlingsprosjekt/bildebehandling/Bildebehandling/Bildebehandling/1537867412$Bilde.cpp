@@ -171,11 +171,11 @@ void Bilde::blackandwhite()
 
 			if ((p->getB() + p->getG()) <= p->getR() && p->getR() >= 100)
 			{
-				grey = 255;
+				grey = 0;
 			}
 			else
 			{
-				grey = 0;
+				grey = 255;
 			}
 
 			//grey = p->getR(); // gråfarge basert på snitt av rgb fargen
@@ -337,7 +337,7 @@ void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int H
 	}
 
 	this->pixelData = this->mellomdata;
-	mellomdata.clear();
+	delete mellomdata;
 }
 
 void Bilde::linefilter()
@@ -387,40 +387,7 @@ void Bilde::linefilter()
 	}
 
 	this->pixelData = this->mellomdata;
-	mellomdata.clear();
-}
 
-int Bilde::pixeldistance()
-{
-	int piksler = 0;
-	int max = 0;
-	int min = 0;
-
-	for (int i = 0; i < this->heigth; i++)
-	{
-
-
-		for (int j = 0; j < this->width; j++)
-		{
-			Pixel *p = &pixelData[i][j];
-
-			if (p->getR() > 120)
-			{
-				if (min == 0)
-				{
-					min = i;
-				}
-				else
-				{
-					max = i;
-				}
-			}
-		}
-	}
-
-	piksler = max - min;
-
-	return piksler;
 }
 #pragma endregion
 

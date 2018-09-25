@@ -418,8 +418,6 @@ int Bilde::pixeldistance()
 		}
 	}
 
-	piksler = max - min;
-
 	return piksler;
 }
 #pragma endregion

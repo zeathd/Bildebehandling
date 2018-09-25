@@ -404,21 +404,9 @@ int Bilde::pixeldistance()
 		{
 			Pixel *p = &pixelData[i][j];
 
-			if (p->getR() > 120)
-			{
-				if (min == 0)
-				{
-					min = i;
-				}
-				else
-				{
-					max = i;
-				}
-			}
+
 		}
 	}
-
-	piksler = max - min;
 
 	return piksler;
 }

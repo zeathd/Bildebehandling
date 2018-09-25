@@ -7,16 +7,15 @@ int main() {
 	Bilde *testbilde = new Bilde;
 	testbilde->lesBitmapFil("tester.bmp");
 
-	testbilde->blackandwhite();
+	testbilde->greyscale();
 	testbilde->lagreBitmapFil("tester1.bmp");
 
-	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
-	testbilde->lagreBitmapFil("tester2.bmp");
-
 	testbilde->linefilter();
-	testbilde->lagreBitmapFil("tester3.bmp");
-
-	cout << "pixeldistansen er: " << testbilde->pixeldistance() << endl;
+	testbilde->linefilter();
+	testbilde->linefilter();
+	testbilde->linefilter();
+	testbilde->linefilter();
+	testbilde->lagreBitmapFil("tester2.bmp");
 
 	delete testbilde;
 	testbilde = 0;

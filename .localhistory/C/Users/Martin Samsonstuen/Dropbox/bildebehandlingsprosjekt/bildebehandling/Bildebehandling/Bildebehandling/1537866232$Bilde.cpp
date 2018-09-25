@@ -171,11 +171,11 @@ void Bilde::blackandwhite()
 
 			if ((p->getB() + p->getG()) <= p->getR() && p->getR() >= 100)
 			{
-				grey = 255;
+				grey = 0;
 			}
 			else
 			{
-				grey = 0;
+				grey = 255;
 			}
 
 			//grey = p->getR(); // gråfarge basert på snitt av rgb fargen
@@ -288,58 +288,6 @@ void Bilde::mirror()
 	}
 }
 
-void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int HH, int II, int dele)
-{
-	/*int AA = 1;
-	int BB = 1;
-	int CC = 1;
-	int DD = 0;
-	int EE = 0;
-	int FF = 0;
-	int GG = -1;
-	int HH = -1;
-	int II = -1;
-	int 
-	*/
-
-	int grey = 0;
-
-	for (int i = 0; i < (this->heigth); i++)
-	{
-		vector<Pixel> rad;
-
-		for (int j = 0; j < this->width; j++)
-		{
-			if (i == 0 || i == this->heigth - 1 || j == 0 || j == this->width - 1)
-			{
-				grey = 0;
-			}
-			else
-			{
-				Pixel *aaa = &pixelData[i - 1][j - 1];
-				Pixel *bbb = &pixelData[i - 1][j];
-				Pixel *ccc = &pixelData[i - 1][j + 1];
-				Pixel *ddd = &pixelData[i][j - 1];
-				Pixel *eee = &pixelData[i][j];
-				Pixel *fff = &pixelData[i][j + 1];
-				Pixel *ggg = &pixelData[i + 1][j - 1];
-				Pixel *hhh = &pixelData[i + 1][j];
-				Pixel *iii = &pixelData[i + 1][j + 1];
-
-				grey = (abs((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II))/dele);
-			}
-
-			Pixel nyPixel(grey, grey, grey);
-			rad.push_back(nyPixel);
-		}
-
-		this->mellomdata.push_back(rad);
-	}
-
-	this->pixelData = this->mellomdata;
-	mellomdata.clear();
-}
-
 void Bilde::linefilter()
 {
 	int AA = 1;
@@ -360,24 +308,17 @@ void Bilde::linefilter()
 
 		for (int j = 0; j < this->width; j++)
 		{
-			if (i == 0 || i == this->heigth-1 || j == 0 || j==this->width-1)
-			{
-				grey = 0;
-			}
-			else
-			{
-				Pixel *aaa = &pixelData[i - 1][j - 1];
-				Pixel *bbb = &pixelData[i - 1][j];
-				Pixel *ccc = &pixelData[i - 1][j + 1];
-				Pixel *ddd = &pixelData[i][j - 1];
-				Pixel *eee = &pixelData[i][j];
-				Pixel *fff = &pixelData[i][j + 1];
-				Pixel *ggg = &pixelData[i + 1][j - 1];
-				Pixel *hhh = &pixelData[i + 1][j];
-				Pixel *iii = &pixelData[i + 1][j + 1];
+			Pixel *aaa = &pixelData[i - 1][j - 1];
+			Pixel *bbb = &pixelData[i - 1][j];
+			Pixel *ccc = &pixelData[i - 1][j + 1];
+			Pixel *ddd = &pixelData[i][j - 1];
+			Pixel *eee = &pixelData[i][j];
+			Pixel *fff = &pixelData[i][j + 1];
+			Pixel *ggg = &pixelData[i + 1][j - 1];
+			Pixel *hhh = &pixelData[i + 1][j];
+			Pixel *iii = &pixelData[i + 1][j + 1];
 
-				grey = (abs((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II)));
-			}
+			grey = ((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II));
 
 			Pixel nyPixel(grey, grey, grey);
 			rad.push_back(nyPixel);
@@ -387,40 +328,7 @@ void Bilde::linefilter()
 	}
 
 	this->pixelData = this->mellomdata;
-	mellomdata.clear();
-}
 
-int Bilde::pixeldistance()
-{
-	int piksler = 0;
-	int max = 0;
-	int min = 0;
-
-	for (int i = 0; i < this->heigth; i++)
-	{
-
-
-		for (int j = 0; j < this->width; j++)
-		{
-			Pixel *p = &pixelData[i][j];
-
-			if (p->getR() > 120)
-			{
-				if (min == 0)
-				{
-					min = i;
-				}
-				else
-				{
-					max = i;
-				}
-			}
-		}
-	}
-
-	piksler = max - min;
-
-	return piksler;
 }
 #pragma endregion
 

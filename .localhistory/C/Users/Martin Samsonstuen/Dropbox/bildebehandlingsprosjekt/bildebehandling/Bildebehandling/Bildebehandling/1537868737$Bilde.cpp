@@ -412,13 +412,11 @@ int Bilde::pixeldistance()
 				}
 				else
 				{
-					max = i;
+
 				}
 			}
 		}
 	}
-
-	piksler = max - min;
 
 	return piksler;
 }

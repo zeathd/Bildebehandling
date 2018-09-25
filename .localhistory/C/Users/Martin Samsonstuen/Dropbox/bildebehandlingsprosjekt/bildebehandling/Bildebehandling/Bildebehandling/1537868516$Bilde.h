@@ -19,7 +19,7 @@ public:
 	void invert();
 	void filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int HH, int II, int dele);
 	void linefilter();
-	int pixeldistance();
+	void pixeldistance();
 
 	int getwidth();
 	int getheigth();

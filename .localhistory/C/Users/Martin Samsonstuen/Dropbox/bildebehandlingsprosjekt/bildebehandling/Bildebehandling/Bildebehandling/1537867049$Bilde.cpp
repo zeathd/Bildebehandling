@@ -171,11 +171,11 @@ void Bilde::blackandwhite()
 
 			if ((p->getB() + p->getG()) <= p->getR() && p->getR() >= 100)
 			{
-				grey = 255;
+				grey = 0;
 			}
 			else
 			{
-				grey = 0;
+				grey = 255;
 			}
 
 			//grey = p->getR(); // gråfarge basert på snitt av rgb fargen
@@ -288,9 +288,9 @@ void Bilde::mirror()
 	}
 }
 
-void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int HH, int II, int dele)
+void Bilde::filter()
 {
-	/*int AA = 1;
+	int AA = 1;
 	int BB = 1;
 	int CC = 1;
 	int DD = 0;
@@ -300,7 +300,6 @@ void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int H
 	int HH = -1;
 	int II = -1;
 	int 
-	*/
 
 	int grey = 0;
 
@@ -326,7 +325,7 @@ void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int H
 				Pixel *hhh = &pixelData[i + 1][j];
 				Pixel *iii = &pixelData[i + 1][j + 1];
 
-				grey = (abs((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II))/dele);
+				grey = (abs((aaa->getR()*AA) + (bbb->getR()*BB) + (ccc->getR()*CC) + (ddd->getR()*DD) + (eee->getR()*EE) + (fff->getR()*FF) + (ggg->getR()*GG) + (hhh->getR()*HH) + (iii->getR()*II)));
 			}
 
 			Pixel nyPixel(grey, grey, grey);
@@ -337,7 +336,7 @@ void Bilde::filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int H
 	}
 
 	this->pixelData = this->mellomdata;
-	mellomdata.clear();
+
 }
 
 void Bilde::linefilter()
@@ -387,40 +386,7 @@ void Bilde::linefilter()
 	}
 
 	this->pixelData = this->mellomdata;
-	mellomdata.clear();
-}
 
-int Bilde::pixeldistance()
-{
-	int piksler = 0;
-	int max = 0;
-	int min = 0;
-
-	for (int i = 0; i < this->heigth; i++)
-	{
-
-
-		for (int j = 0; j < this->width; j++)
-		{
-			Pixel *p = &pixelData[i][j];
-
-			if (p->getR() > 120)
-			{
-				if (min == 0)
-				{
-					min = i;
-				}
-				else
-				{
-					max = i;
-				}
-			}
-		}
-	}
-
-	piksler = max - min;
-
-	return piksler;
 }
 #pragma endregion
 

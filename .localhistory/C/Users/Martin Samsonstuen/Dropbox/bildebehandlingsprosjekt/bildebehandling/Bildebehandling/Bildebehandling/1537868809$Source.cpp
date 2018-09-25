@@ -16,8 +16,6 @@ int main() {
 	testbilde->linefilter();
 	testbilde->lagreBitmapFil("tester3.bmp");
 
-	cout << "pixeldistansen er: " << testbilde->pixeldistance() << endl;
-
 	delete testbilde;
 	testbilde = 0;
 

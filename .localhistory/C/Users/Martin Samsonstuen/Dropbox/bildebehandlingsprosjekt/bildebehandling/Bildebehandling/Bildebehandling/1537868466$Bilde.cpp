@@ -389,39 +389,6 @@ void Bilde::linefilter()
 	this->pixelData = this->mellomdata;
 	mellomdata.clear();
 }
-
-int Bilde::pixeldistance()
-{
-	int piksler = 0;
-	int max = 0;
-	int min = 0;
-
-	for (int i = 0; i < this->heigth; i++)
-	{
-
-
-		for (int j = 0; j < this->width; j++)
-		{
-			Pixel *p = &pixelData[i][j];
-
-			if (p->getR() > 120)
-			{
-				if (min == 0)
-				{
-					min = i;
-				}
-				else
-				{
-					max = i;
-				}
-			}
-		}
-	}
-
-	piksler = max - min;
-
-	return piksler;
-}
 #pragma endregion
 
 #pragma region "get funksjoner"

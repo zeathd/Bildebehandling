@@ -11,12 +11,14 @@ int main() {
 	testbilde->lagreBitmapFil("tester1.bmp");
 
 	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
+	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
+	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
+	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
+	testbilde->filter(1, 1, 1, 1, 1, 1, 1, 1, 1, 9);
 	testbilde->lagreBitmapFil("tester2.bmp");
 
 	testbilde->linefilter();
 	testbilde->lagreBitmapFil("tester3.bmp");
-
-	cout << "pixeldistansen er: " << testbilde->pixeldistance() << endl;
 
 	delete testbilde;
 	testbilde = 0;

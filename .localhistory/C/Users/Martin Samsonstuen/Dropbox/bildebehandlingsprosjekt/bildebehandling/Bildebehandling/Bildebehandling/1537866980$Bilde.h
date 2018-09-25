@@ -17,9 +17,7 @@ public:
 	void redtogreyscale();
 	void blackandwhite();
 	void invert();
-	void filter(int AA, int BB, int CC, int DD, int EE, int FF, int GG, int HH, int II, int dele);
 	void linefilter();
-	int pixeldistance();
 
 	int getwidth();
 	int getheigth();
